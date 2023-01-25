@@ -176,7 +176,7 @@ const saveChanges = async () => {
     };
 
     try {
-      const res = await apiFetch("/api/api.php?action=" + action, {
+      await apiFetch("/api/api.php?action=" + action, {
         method: "POST",
         body: data,
       });
@@ -344,6 +344,7 @@ const endDrag = (value: any, patrolid: number) => {
     <LoadingMessage v-if="loadingData" />
 
     <div v-else class="flex gap-2 flex-wrap mt-12 justify-center">
+      <!--suppress HtmlUnknownTag -->
       <draggable
         v-for="patrol in patrols"
         :key="patrol.patrolid"
