@@ -136,7 +136,7 @@ const saveChanges = async () => {
     console.log(patrol);
     for (const idx in patrol.members) {
       const member = patrol.members[idx];
-      if (changedPatrol[member.scoutid]) {
+      if (changedPatrol[member.scoutid] !== undefined) {
         saveQueue.value.push({
           member: member,
           value: changedPatrol[member.scoutid],
