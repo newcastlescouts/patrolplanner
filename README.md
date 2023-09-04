@@ -2,6 +2,8 @@
 
 PatrolPlanner is a tool for UK Scouting organizations that helps to visualize and intuitively drag 'n' drop patrols, sixes, and lodges using OSM (Online Scout Manager). It is written in TypeScript and PHP and is completely free to use and open-source.
 
+![Demo](https://i.imgur.com/aADnrHa.png)
+
 ## Features
 
 - Intuitive drag and drop interface for creating and managing patrols, sixes, and lodges.
