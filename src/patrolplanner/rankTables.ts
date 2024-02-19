@@ -1,4 +1,4 @@
-import type { RankLiteral } from "@/types";
+import type { RankLiteral } from "@/patrolplanner/types";
 
 const rankLabels: RankLiteral = {
   cubs: {

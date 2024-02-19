@@ -7,5 +7,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import LoadingSpin from "@/components/UI/LoadingSpin.vue";
+import LoadingSpin from "@/patrolplanner/components/UI/LoadingSpin.vue";
 </script>

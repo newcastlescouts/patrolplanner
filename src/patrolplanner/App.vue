@@ -1,13 +1,13 @@
 <script setup lang="ts">
 // @ts-nocheck (breaks a bunch of stuff that actually works)
-import AppHeader from "@/components/UI/AppHeader.vue";
-import AppFooter from "@/components/UI/AppFooter.vue";
+import AppHeader from "@/patrolplanner/components/UI/AppHeader.vue";
+import AppFooter from "@/patrolplanner/components/UI/AppFooter.vue";
 import { ref, onMounted } from "vue";
 import apiFetch from "./apiFetch";
-import NonAuth from "@/components/MainScreen/NonAuth.vue";
-import SectionPicker from "@/components/UI/SectionPicker.vue";
-import PatrolPlanner from "@/components/UI/PatrolPlanner.vue";
-import type * as types from "@/types";
+import NonAuth from "@/patrolplanner/components/MainScreen/NonAuth.vue";
+import SectionPicker from "@/patrolplanner/components/UI/SectionPicker.vue";
+import PatrolPlanner from "@/patrolplanner/components/UI/PatrolPlanner.vue";
+import type * as types from "@/patrolplanner/types";
 
 const auth = ref({
   loading: true,
