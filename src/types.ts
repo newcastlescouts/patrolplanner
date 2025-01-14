@@ -24,6 +24,7 @@ export interface Member {
   photo_url: string;
   rank: number;
   rank_abbr: string;
+  age: string;
 }
 
 export interface Patrol {

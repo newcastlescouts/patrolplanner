@@ -23,9 +23,17 @@ const member = ref(props.member);
       :alt="member.name"
       class="h-8 w-8 rounded-md"
     />
-    <p class="text-sm flex-1 font-medium">
-      {{ member.forename }} {{ member.surname }}
-    </p>
+    <div class="flex-1">
+      <p class="text-sm flex-1 font-medium">
+        {{ member.forename }} {{ member.surname }}
+      </p>
+      <p
+        v-if="member.patrolid >= 0"
+        class="text-[0.6rem] -mt-0.5 text-slate-500"
+      >
+        {{ member.age }}
+      </p>
+    </div>
     <div v-if="patrol > -2">
       <ChevronUpIcon
         class="h-4 text-purple"
