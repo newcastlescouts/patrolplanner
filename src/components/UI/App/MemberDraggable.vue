@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, defineExpose, ref } from "vue";
-import type { Member } from "@/patrolplanner/types";
-import { imageReplace } from "@/patrolplanner/util";
+import type { Member } from "@/types";
+import { imageReplace } from "@/util";
 import { ChevronUpIcon, ChevronDoubleUpIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps<{

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import apiFetch from "@/patrolplanner/apiFetch";
-import HeaderBar from "@/patrolplanner/components/UI/App/HeaderBar.vue";
-import * as types from "@/patrolplanner/types";
+import apiFetch from "@/apiFetch";
+import HeaderBar from "@/components/UI/App/HeaderBar.vue";
+import * as types from "@/types";
 // noinspection ES6UnusedImports
 import draggable from "vuedraggable";
-import { rankAbbreviations, rankLabels } from "@/patrolplanner/rankTables";
-import { imageReplace } from "@/patrolplanner/util";
-import MemberDraggable from "@/patrolplanner/components/UI/App/MemberDraggable.vue";
-import LoadingMessage from "@/patrolplanner/components/UI/App/LoadingMessage.vue";
-import LoadingSpin from "@/patrolplanner/components/UI/LoadingSpin.vue";
+import { rankAbbreviations, rankLabels } from "@/rankTables";
+import { imageReplace } from "@/util";
+import MemberDraggable from "@/components/UI/App/MemberDraggable.vue";
+import LoadingMessage from "@/components/UI/App/LoadingMessage.vue";
+import LoadingSpin from "@/components/UI/LoadingSpin.vue";
 
 const props = defineProps<{
   data: types.SectionPayload;

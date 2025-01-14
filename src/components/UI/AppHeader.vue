@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import LoadingSpin from "@/patrolplanner/components/UI/LoadingSpin.vue";
+import LoadingSpin from "@/components/UI/LoadingSpin.vue";
 
 const props = defineProps({
   auth: {
@@ -28,11 +28,7 @@ const disconnect = () => {
 <template>
   <header class="bg-purple p-3">
     <div class="max-w-6xl mx-auto flex items-center gap-5">
-      <img
-        src="/src/patrolplanner/assetsplanner/assets/fleur-de-lis.png"
-        alt="Fleur de Lis"
-        class="h-10"
-      />
+      <img src="/src/assets/fleur-de-lis.png" alt="Fleur de Lis" class="h-10" />
       <div>
         <p class="font-semibold text-white">Patrol Planner</p>
         <p class="text-sm text-white">OSM Integration Tool</p>

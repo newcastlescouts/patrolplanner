@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import type * as types from "@/patrolplanner/types";
+import type * as types from "@/types";
 
 const props = defineProps<{
   section: types.Section;
