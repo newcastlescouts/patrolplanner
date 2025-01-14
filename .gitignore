@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 vendor/
-api/secrets.json
+api/secrets.json!/src/

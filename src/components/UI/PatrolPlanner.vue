@@ -75,6 +75,7 @@ onMounted(async () => {
       photo_url: photo_url,
       rank: rank_number,
       rank_abbr: rank_abbrev,
+      age: scout.age,
     };
 
     if (patrols.value[patrolid] === undefined) {
@@ -205,6 +206,24 @@ const endDrag = (value: any, patrolid: number) => {
     console.log(patrolid);
     changedPatrol[value.added.element.scoutid] = patrolid;
   }
+};
+
+const averageAge = (patrolid: number) => {
+  let total = 0;
+
+  for (const member of patrols.value[patrolid].members) {
+    const age = member.age.split(" / ");
+    total += parseInt(age[0]) + parseInt(age[1]) / 12;
+  }
+
+  return total / patrols.value[patrolid].members.length;
+};
+
+const formatAge = (age: number) => {
+  const years = Math.floor(age);
+  const months = Math.round((age - years) * 12);
+
+  return `${years} / ${months}`;
 };
 </script>
 
@@ -350,20 +369,26 @@ const endDrag = (value: any, patrolid: number) => {
         :key="patrol.patrolid"
         :list="patrol.members"
         item-key="scoutid"
-        class="bg-white rounded-xl w-72 cursor-pointer"
+        class="bg-white rounded-xl w-72 cursor-pointer flex flex-col"
         group="members"
         @start="dragging = true"
         @change="(e) => endDrag(e, patrol.patrolid)"
         :disabled="false"
       >
         <template #header>
-          <div class="px-5 py-2.5 border-b">
+          <div class="px-5 py-2.5 border-b flex justify-between items-center">
             <h2 class="text-purple font-bold text-lg">
               <span v-if="patrol.patrolid === -2"> Leaders </span>
               <span v-else-if="patrol.patrolid === -3"> Young Leaders </span>
               <span v-else-if="patrol.patrolid === 0"> Not Assigned </span>
               <span v-else> {{ patrol.name }} </span>
             </h2>
+
+            <div class="text-right text-slate-500">
+              <p class="text-xs">
+                {{ patrol.members.length }}
+              </p>
+            </div>
           </div>
         </template>
         <template #item="{ element }">
@@ -372,6 +397,19 @@ const endDrag = (value: any, patrolid: number) => {
             :patrol="patrol.patrolid"
             :member="element"
           />
+        </template>
+
+        <template #footer>
+          <div class="flex-1 py-1" />
+          <div
+            v-if="patrol.patrolid >= 0"
+            class="text-center px-5 py-2.5 text-xs font-semibold text-slate-500 border-t flex justify-between"
+          >
+            <p>Average age</p>
+            <p>
+              {{ formatAge(averageAge(patrol.patrolid).toFixed(1)) }}
+            </p>
+          </div>
         </template>
       </draggable>
     </div>
