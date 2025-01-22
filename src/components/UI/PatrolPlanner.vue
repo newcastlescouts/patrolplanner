@@ -219,7 +219,13 @@ const averageAge = (patrolid: number) => {
   return total / patrols.value[patrolid].members.length;
 };
 
-const formatAge = (age: number) => {
+const formatAge = (rawAge: string | number) => {
+  if (typeof rawAge === "string") {
+    rawAge = parseFloat(rawAge);
+  }
+
+  const age = rawAge as number;
+
   const years = Math.floor(age);
   const months = Math.round((age - years) * 12);
 
@@ -362,22 +368,27 @@ const formatAge = (age: number) => {
 
     <LoadingMessage v-if="loadingData" />
 
-    <div v-else class="flex gap-2 flex-wrap mt-12 justify-center">
+    <div
+      v-else
+      class="flex gap-2 print:gap-0 flex-wrap mt-12 print:mt-0 print:pt-1.5 print:border justify-center print:justify-start"
+    >
       <!--suppress HtmlUnknownTag -->
       <draggable
         v-for="patrol in patrols"
         :key="patrol.patrolid"
         :list="patrol.members"
         item-key="scoutid"
-        class="bg-white rounded-xl w-72 cursor-pointer flex flex-col"
+        class="bg-white rounded-xl print:rounded-none w-72 print:w-1/3 cursor-pointer flex flex-col print:border-x print:border-b"
         group="members"
         @start="dragging = true"
         @change="(e) => endDrag(e, patrol.patrolid)"
         :disabled="false"
       >
         <template #header>
-          <div class="px-5 py-2.5 border-b flex justify-between items-center">
-            <h2 class="text-purple font-bold text-lg">
+          <div
+            class="px-5 py-2.5 print:px-1.5 print:py-0 border-b flex justify-between items-center"
+          >
+            <h2 class="text-purple font-bold text-lg print:text-base">
               <span v-if="patrol.patrolid === -2"> Leaders </span>
               <span v-else-if="patrol.patrolid === -3"> Young Leaders </span>
               <span v-else-if="patrol.patrolid === 0"> Not Assigned </span>
@@ -387,8 +398,14 @@ const formatAge = (age: number) => {
             <div class="text-right text-slate-500">
               <p class="text-xs">
                 {{ patrol.members.length }}
+
+                <span class="hidden print:inline"> members </span>
               </p>
             </div>
+
+            <span class="hidden print:inline text-xs">
+              Average {{ formatAge(averageAge(patrol.patrolid).toFixed(1)) }}
+            </span>
           </div>
         </template>
         <template #item="{ element }">
@@ -403,7 +420,7 @@ const formatAge = (age: number) => {
           <div class="flex-1 py-1" />
           <div
             v-if="patrol.patrolid >= 0"
-            class="text-center px-5 py-2.5 text-xs font-semibold text-slate-500 border-t flex justify-between"
+            class="text-center print:hidden px-5 py-2.5 text-xs font-semibold text-slate-500 border-t flex justify-between"
           >
             <p>Average age</p>
             <p>
@@ -416,7 +433,7 @@ const formatAge = (age: number) => {
 
     <div class="flex-1"></div>
 
-    <div class="flex items-center text-sm text-gray-500">
+    <div class="flex items-center text-sm text-gray-500 print:hidden">
       <div class="flex-1">
         <p>
           To change the six/patrol a member, drag and drop them into the correct

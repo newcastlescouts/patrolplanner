@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-navy p-2 text-white">
+  <footer class="bg-navy p-2 text-white print:hidden">
     <div class="px-5">
       <div
         class="max-w-screen-xl mx-auto text-sm items-center font-medium flex gap-5"

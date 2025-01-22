@@ -66,5 +66,10 @@ function make_osm_request($route, $method = 'GET', $body = null) {
         $contents = substr($contents, 0, $htmlPos - 1) . '}}}}';
     }
 
+    // Some OSM requests return malformed JSON. This is a roundabout way of fixing it.
+    if (!json_decode($contents)) {
+        $contents .= '}';
+    }
+
     return json_decode($contents, true);
 }

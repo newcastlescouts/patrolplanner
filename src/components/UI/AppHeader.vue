@@ -26,7 +26,7 @@ const disconnect = () => {
 </script>
 
 <template>
-  <header class="bg-purple p-3">
+  <header class="bg-purple p-3 print:hidden">
     <div class="max-w-6xl mx-auto flex items-center gap-5">
       <img src="/src/assets/fleur-de-lis.png" alt="Fleur de Lis" class="h-10" />
       <div>
