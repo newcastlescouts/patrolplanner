@@ -91,6 +91,7 @@ onMounted(async () => {
 
   patrols.value = Object.fromEntries(
     Object.entries(patrols.value).map(([key, value]) => {
+      // @ts-ignore
       value.members = value.members.sort((a: types.Member, b: types.Member) => {
         return b.rank - a.rank;
       });
