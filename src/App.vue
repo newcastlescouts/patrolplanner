@@ -71,7 +71,10 @@ const changeSection = (section: object) => {
   >
     <NonAuth />
   </main>
-  <main class="flex-1 bg-slate-100 h-full flex flex-col" v-else>
+  <main
+    class="flex-1 bg-slate-100 print:bg-transparent h-full flex flex-col"
+    v-else
+  >
     <!-- ensure tailwind compiles these -->
     <div class="hidden bg-blue bg-green bg-navy"></div>
 
