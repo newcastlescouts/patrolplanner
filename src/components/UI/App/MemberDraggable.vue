@@ -14,14 +14,14 @@ const member = ref(props.member);
 
 <template>
   <div
-    class="flex items-center gap-2 px-3 py-1 border-b last:border-b-0 first:border-t"
+    class="flex items-center gap-2 px-3 py-1 print:py-0.5 print:px-1.5 border-b last:border-b-0 first:border-t"
     @click="$emit('click')"
   >
     <img
       @error="imageReplace($event, member)"
       :src="member.photo_url"
       :alt="member.name"
-      class="h-8 w-8 rounded-md"
+      class="h-8 w-8 rounded-md print:hidden"
     />
     <div class="flex-1">
       <p class="text-sm flex-1 font-medium">
