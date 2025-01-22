@@ -89,6 +89,15 @@ onMounted(async () => {
     }
   }
 
+  patrols.value = Object.fromEntries(
+    Object.entries(patrols.value).map(([key, value]) => {
+      value.members = value.members.sort((a: types.Member, b: types.Member) => {
+        return b.rank - a.rank;
+      });
+      return [key, value];
+    })
+  );
+
   loadingData.value = false;
 });
 
