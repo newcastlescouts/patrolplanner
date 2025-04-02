@@ -47,7 +47,11 @@ onMounted(async () => {
 
     // get first 4 chars of scout id, then pad with 0s to 7 chars
     const photo_start = scoutid.toString().slice(0, 4) + "000";
-    const photo_url = `https://www.onlinescoutmanager.co.uk/sites/onlinescoutmanager.co.uk/public/member_photos/${photo_start}/${scoutid}/${photo_guid}/250x250_0.jpg`;
+    let photo_url = `https://www.onlinescoutmanager.co.uk/sites/onlinescoutmanager.co.uk/public/member_photos/${photo_start}/${scoutid}/${photo_guid}/250x250_0.jpg`;
+
+    if (photo_guid === null) {
+      photo_url = `https://api.dicebear.com/5.x/fun-emoji/svg?seed=${scoutid}`;
+    }
 
     let rank_number = 0;
     if (rank === "Senior Sixer" || rank === "Senior Patrol Leader") {
